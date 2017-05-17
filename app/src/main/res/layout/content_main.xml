@@ -11,6 +11,13 @@
     tools:context="com.example.fewwind.chaozhuofirst.MainActivity"
     tools:showIn="@layout/activity_main">
 
+    <TextView
+        android:id="@+id/id_tv_anim"
+        android:text="测试"
+        android:layout_gravity="center"
+        android:textSize="25sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
     <com.flaviofaria.kenburnsview.KenBurnsView
         android:id="@+id/image"
         android:layout_width="100dp"
