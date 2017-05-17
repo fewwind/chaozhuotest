@@ -3,6 +3,8 @@ package com.example.fewwind.chaozhuofirst;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by fewwind on 17-3-8.
@@ -31,5 +33,13 @@ public class Util {
             Toast.makeText(context, "失败",
                 Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public static String getFormatedDate(Context c, long time) {
+        final Date date = new Date(time);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        StringBuilder buffer = new StringBuilder();
+        buffer.append(sdf.format(date));
+        return buffer.toString();
     }
 }
