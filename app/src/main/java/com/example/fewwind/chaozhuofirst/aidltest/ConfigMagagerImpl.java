@@ -14,7 +14,7 @@ import android.os.RemoteException;
 public class ConfigMagagerImpl extends Binder implements IConfigManager{
 
 	private static final java.lang.String DESCRIPTPR = "configmanagerImp";
-	// develop add
+	// develop delete
 
 	private String value;
 	private Context mContext;
