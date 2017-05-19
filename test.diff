@@ -1,0 +1,39 @@
+diff --git a/app/src/main/java/com/example/fewwind/chaozhuofirst/MainActivity.java b/app/src/main/java/com/example/fewwind/chaozhuofirst/MainActivity.java
+index a146e94..0317163 100644
+--- a/app/src/main/java/com/example/fewwind/chaozhuofirst/MainActivity.java
++++ b/app/src/main/java/com/example/fewwind/chaozhuofirst/MainActivity.java
+@@ -115,6 +115,11 @@ public class MainActivity extends AppCompatActivity {
+         testDemo();
+         Logger.w("版本×××"+BuildConfig.DEBUG);
+         showAnim(mTvAnim);//
++
++        getWindow().getDecorView().getBackground().getColorFilter();
++        //2
++        //3
++        //4
+     }
+ 
+     private void send(){
+diff --git a/app/src/main/java/com/example/fewwind/chaozhuofirst/aidltest/ConfigMagagerImpl.java b/app/src/main/java/com/example/fewwind/chaozhuofirst/aidltest/ConfigMagagerImpl.java
+index 9e5003e..3c731e8 100644
+--- a/app/src/main/java/com/example/fewwind/chaozhuofirst/aidltest/ConfigMagagerImpl.java
++++ b/app/src/main/java/com/example/fewwind/chaozhuofirst/aidltest/ConfigMagagerImpl.java
+@@ -14,7 +14,7 @@ import android.os.RemoteException;
+ public class ConfigMagagerImpl extends Binder implements IConfigManager{
+ 
+ 	private static final java.lang.String DESCRIPTPR = "configmanagerImp";
+-
++	// develop delete
+ 
+ 	private String value;
+ 	private Context mContext;
+diff --git a/app/src/main/java/com/example/fewwind/chaozhuofirst/aidltest/IConfigManager.java b/app/src/main/java/com/example/fewwind/chaozhuofirst/aidltest/IConfigManager.java
+index b9e064a..1297a65 100644
+--- a/app/src/main/java/com/example/fewwind/chaozhuofirst/aidltest/IConfigManager.java
++++ b/app/src/main/java/com/example/fewwind/chaozhuofirst/aidltest/IConfigManager.java
+@@ -10,4 +10,5 @@ import android.os.RemoteException;
+ public interface IConfigManager extends IInterface{
+ 	void setValue(String value) throws RemoteException;
+ 	String getValue() throws RemoteException;
++	// master add
+ }
