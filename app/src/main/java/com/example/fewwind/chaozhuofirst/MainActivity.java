@@ -115,6 +115,11 @@ public class MainActivity extends AppCompatActivity {
         testDemo();
         Logger.w("版本×××"+BuildConfig.DEBUG);
         showAnim(mTvAnim);//
+
+        getWindow().getDecorView().getBackground().getColorFilter();
+        //2
+        //3
+        //4
     }
 
     private void send(){

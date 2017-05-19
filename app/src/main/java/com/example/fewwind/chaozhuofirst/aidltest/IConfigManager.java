@@ -10,4 +10,5 @@ import android.os.RemoteException;
 public interface IConfigManager extends IInterface{
 	void setValue(String value) throws RemoteException;
 	String getValue() throws RemoteException;
+	// master add
 }

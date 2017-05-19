@@ -1,0 +1,10 @@
+diff a/app/src/main/java/com/example/fewwind/chaozhuofirst/aidltest/ConfigMagagerImpl.java b/app/src/main/java/com/example/fewwind/chaozhuofirst/aidltest/ConfigMagagerImpl.java	(rejected hunks)
+@@ -14,7 +14,7 @@ import android.os.RemoteException;
+ public class ConfigMagagerImpl extends Binder implements IConfigManager{
+ 
+ 	private static final java.lang.String DESCRIPTPR = "configmanagerImp";
+-
++	// develop delete
+ 
+ 	private String value;
+ 	private Context mContext;
