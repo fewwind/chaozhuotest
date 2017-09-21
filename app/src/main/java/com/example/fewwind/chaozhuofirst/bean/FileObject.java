@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by fewwind on 17-3-1.
  */
 
-public class FileObject implements Serializable {
+public class FileObject implements Serializable ,IType {
     public  String title;
     int version;
 
@@ -42,5 +42,10 @@ public class FileObject implements Serializable {
 
     public void setVersion(int version) {
         this.version = version;
+    }
+
+
+    @Override public int getType(TypeFactory factory) {
+        return factory.type(this);
     }
 }

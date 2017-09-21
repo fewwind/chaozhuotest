@@ -9,9 +9,12 @@ import android.graphics.Canvas;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import com.orhanobut.logger.Logger;
 import java.io.ByteArrayOutputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Utils
 {
@@ -113,5 +116,18 @@ public class Utils
         BitmapDrawable bd = new BitmapDrawable(bm);
         bd.setTargetDensity(bm.getDensity());
         return new BitmapDrawable(bm);
+    }
+
+    public static void test(){
+        List<String> mList = new ArrayList<>();
+        List<String> mTemp = new ArrayList<>();
+        mTemp.add("1");
+        mTemp.add("2");
+        mTemp.add("3");
+        mList.addAll(mTemp);
+        mTemp.remove(0);
+
+        Logger.w("静态方法"+mList.toString()+"\n"+
+        mTemp.toString());
     }
 }

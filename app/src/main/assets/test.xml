@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?><!--4:3-->
+<keyMappingInfos pkgName="com.android.settings" state="1" version="2.5-3.0"> <!-- 王者荣耀 -->
+    <keyMappingInfo keyCode="29" keyCodeModifier="0" direction="1" distance="0" x="0.122"
+        y="0.795"/><!--A-->
+    <keyMappingInfo keyCode="51" keyCodeModifier="0" direction="2" distance="0" x="0.122"
+        y="0.795"/><!--W-->
+    <keyMappingInfo keyCode="32" keyCodeModifier="0" direction="3" distance="0" x="0.122"
+        y="0.795"/><!--D-->
+    <keyMappingInfo keyCode="47" keyCodeModifier="0" direction="4" distance="0" x="0.122"
+        y="0.795"/><!--S-->
+</keyMappingInfos>
+
+<keyMappingInfos pkgName="com.android.deskclock" state="1" version="2.5-3.0"> <!-- 王者荣耀 -->
+<keyMappingInfo keyCode="29" keyCodeModifier="0" direction="1" distance="0" x="0.122"
+    y="0.795"/><!--A-->
+<keyMappingInfo keyCode="51" keyCodeModifier="0" direction="2" distance="0" x="0.122"
+    y="0.795"/><!--W-->
+<keyMappingInfo keyCode="32" keyCodeModifier="0" direction="3" distance="0" x="0.122"
+    y="0.795"/><!--D-->
+<keyMappingInfo keyCode="47" keyCodeModifier="0" direction="4" distance="0" x="0.122"
+    y="0.795"/><!--S-->
+</keyMappingInfos>
+
+<keyMappingInfos pkgName="com.tencent.tmgp.sgame" state="1" version="2.5-3.0"> <!-- 王者荣耀 -->
+<keyMappingInfo keyCode="29" keyCodeModifier="0" direction="1" distance="0" x="0.122"
+    y="0.795"/><!--A-->
+<keyMappingInfo keyCode="51" keyCodeModifier="0" direction="2" distance="0" x="0.122"
+    y="0.795"/><!--W-->
+<keyMappingInfo keyCode="32" keyCodeModifier="0" direction="3" distance="0" x="0.122"
+    y="0.795"/><!--D-->
+<keyMappingInfo keyCode="47" keyCodeModifier="0" direction="4" distance="0" x="0.122"
+    y="0.795"/><!--S-->
+</keyMappingInfos>
+
+<keyMappingInfos pkgName="com.tencent.tmgp.sgame" state="1" version="2.5-3.0"
+mode="1"><!--王者荣耀智能施法-->
+<keyMappingInfo keyCode="45" keyCodeModifier="0" direction="12" distance="0" x="0.69875"
+    y="0.85916"/>
+<!--q-->
+<keyMappingInfo keyCode="51" keyCodeModifier="0" direction="13" distance="0" x="0.806" y="0.686"/>
+<!--w-->
+<keyMappingInfo keyCode="33" keyCodeModifier="0" direction="14" distance="0" x="0.886" y="0.592"/>
+<!--e-->
+<keyMappingInfo keyCode="61" keyCodeModifier="0" direction="20" distance="0" x="0.903" y="0.264"/>
+<!--tab-->
+<keyMappingInfo keyCode="289" keyCodeModifier="0" direction="8" distance="0" x="0.121" y="0.793"/>
+<!--mouse wheel-->
+<keyMappingInfo keyCode="131" keyCodeModifier="0" direction="0" distance="0" x="0.693" y="0.776"/>
+<!--f1-->
+<keyMappingInfo keyCode="132" keyCodeModifier="0" direction="0" distance="0" x="0.754" y="0.590"/>
+<!--f2-->
+<keyMappingInfo keyCode="133" keyCodeModifier="0" direction="0" distance="0" x="0.857" y="0.480"/>
+<!--f3-->
+<keyMappingInfo keyCode="30" keyCodeModifier="0" direction="0" distance="0" x="0.506" y="0.893"/>
+<!--b-->
+<keyMappingInfo keyCode="32" keyCodeModifier="0" direction="0" distance="0" x="0.581" y="0.893"/>
+<!--d-->
+<keyMappingInfo keyCode="34" keyCodeModifier="0" direction="0" distance="0" x="0.659" y="0.893"/>
+<!--f-->
+<keyMappingInfo keyCode="50" keyCodeModifier="0" direction="0" distance="0" x="0.037" y="0.423"/>
+<!--v-->
+<keyMappingInfo keyCode="134" keyCodeModifier="0" direction="0" distance="0" x="0.105" y="0.399"/>
+<!--f4-->
+<keyMappingInfo keyCode="135" keyCodeModifier="0" direction="0" distance="0" x="0.105" y="0.504"/>
+<!--f5-->
+<keyMappingInfo keyCode="62" keyCodeModifier="0" direction="0" distance="0" x="0.914" y="0.856"/>
+<!--spc-->
+<keyMappingInfo keyCode="66" keyCodeModifier="0" direction="0" distance="0" x="0.978" y="0.365"/>
+<!--ret-->
+<keyMappingInfo keyCode="47" keyCodeModifier="0" direction="0" distance="0" x="0.957" y="0.712"/>
+<!--s-->
+<keyMappingInfo keyCode="35" keyCodeModifier="0" direction="0" distance="0" x="0.198" y="0.294"/>
+<!--g-->
+<keyMappingInfo keyCode="68" keyCodeModifier="0" direction="0" distance="0" x="0.944" y="0.075"/>
+<!--grave-->
+<keyMappingInfo keyCode="29" keyCodeModifier="0" direction="0" distance="0" x="0.829" y="0.908"/>
+<!--a-->
+<keyMappingInfo keyCode="31" keyCodeModifier="0" direction="0" distance="0" x="0.977" y="0.287"/>
+<!--c-->
+<keyMappingInfo keyCode="52" keyCodeModifier="0" direction="0" distance="0" x="0.977" y="0.207"/>
+<!--x-->
+<keyMappingInfo keyCode="54" keyCodeModifier="0" direction="0" distance="0" x="0.977" y="0.134"/>
+<!--z-->
+</keyMappingInfos>

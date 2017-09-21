@@ -6,6 +6,7 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.os.Parcel;
 import android.os.RemoteException;
+import org.json.JSONObject;
 
 /**
  * Created by fewwind on 17-5-18.
@@ -28,8 +29,18 @@ public class ConfigMagagerImpl extends Binder implements IConfigManager{
 
 	@Override public void setValue(String value) throws RemoteException {
 		this.value = value;
+		NetParams params = new NetParams();
+		params.injectExtraData(null);
+		NetParamsSub sub = new NetParamsSub();
+		sub.injectExtraData(null);
 	}
 
+	public class NetParamsSub extends NetParams{
+		@Override protected void injectExtraData(JSONObject jsonObj) {
+			super.injectExtraData(jsonObj);
+
+		}
+	}
 
 	@Override public String getValue() throws RemoteException {
 		return value;

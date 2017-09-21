@@ -1,0 +1,17 @@
+[
+  {
+    "pkg": "com.android.settings",
+    "mode": 1,
+    "modes": "0-1"
+  },
+  {
+    "pkg": "com.tencent.tmgp.sgame",
+    "mode": 1,
+    "modes": "0-1"
+  },
+  {
+    "pkg": "com.example.holmes.multitouchview",
+    "mode": 1,
+    "modes": "0-1"
+  }
+]
