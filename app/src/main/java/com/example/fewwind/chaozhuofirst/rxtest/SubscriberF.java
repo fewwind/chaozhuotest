@@ -5,6 +5,7 @@ package com.example.fewwind.chaozhuofirst.rxtest;
  */
 
 public abstract class SubscriberF<T> implements ObserverF<T>{
-    void add1();
+    void add1(){};
+    void add2(){};
     public void onStart(){};
 }
