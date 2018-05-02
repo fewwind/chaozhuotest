@@ -84,7 +84,6 @@ public class RxActivity extends BaseActivity {
         //for (Integer intKey:mNewCache.keySet()) {
         //    Logger.w(mNewCache.get(intKey).toString());
         //}
-
         Observable.from(mListMsg).subscribe(new Action1<PushMessage>() {
             @Override public void call(PushMessage pushMessage) {
 

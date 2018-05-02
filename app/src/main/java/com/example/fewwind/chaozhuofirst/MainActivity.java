@@ -42,9 +42,11 @@ import com.example.fewwind.chaozhuofirst.adapter.baseadapter.base.ViewHolder;
 import com.example.fewwind.chaozhuofirst.bean.MainIntent;
 import com.example.fewwind.chaozhuofirst.rxtest.ObservableF;
 import com.example.fewwind.chaozhuofirst.rxtest.SubscriberF;
+import com.example.fewwind.chaozhuofirst.ui.EllipseTipView;
 import com.example.fewwind.chaozhuofirst.ui.MainFragment;
 import com.example.fewwind.chaozhuofirst.ui.RvActivity;
 import com.example.fewwind.chaozhuofirst.ui.SecondFragment;
+import com.example.fewwind.chaozhuofirst.ui.view.AdImageView;
 import com.example.fewwind.chaozhuofirst.ui.view.FailingBall;
 import com.example.fewwind.chaozhuofirst.util.disk.Utils;
 import com.example.fewwind.chaozhuofirst.utils.DataUtil;
@@ -61,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
     private Context mContext;
 
     private TextView mTvAnim;
+    private AdImageView mIvAd;
     RecyclerView mRv;
     private Handler mHanlder;
 
@@ -128,7 +131,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         final KenBurnsView kbv = (KenBurnsView) findViewById(R.id.image);
-        kbv.setVisibility(View.GONE);
         kbv.setTransitionListener(new KenBurnsView.TransitionListener() {
             @Override
             public void onTransitionStart(Transition transition) {
@@ -139,7 +141,8 @@ public class MainActivity extends AppCompatActivity {
             public void onTransitionEnd(Transition transition) {
             }
         });
-
+        kbv.setImageResource(R.drawable.closebtn_forcus);
+        kbv.setBackgroundResource(R.drawable.wof);
         //testCache();
         showAnim(mTvAnim);//
         SecondFragment secondFragment = SecondFragment.newInstance("", "");
@@ -165,8 +168,6 @@ public class MainActivity extends AppCompatActivity {
 
         File files = new File(Environment.getExternalStorageDirectory().getPath()+"/.CZWall");
         if (files.exists()){
-
-            Logger.e(files.isDirectory()+"==="+files.list().length);
         }
 
         Context mContext = this;
@@ -178,6 +179,30 @@ public class MainActivity extends AppCompatActivity {
             Logger.w(mContext.getClassLoader().toString());
             classLoader = classLoader.getParent();
         }
+        EllipseTipView tipView = (EllipseTipView) findViewById(R.id.tip_view);
+        tipView.setShow(0,"娜可露露");
+        EllipseTipView  ifng = new EllipseTipView(this);
+        mIvAd = (AdImageView) findViewById(R.id.ad_image);
+        Logger.w("资源id"+DataUtil.getIdByName("wo"));
+        new Thread(){
+            @Override public void run() {
+                super.run();
+                for (int i = 0; i < 33; i++) {
+                    final int j = i;
+                    try {
+                        Thread.sleep(666);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    Logger.v("ondraw = "+j);
+                    runOnUiThread(new Runnable() {
+                        @Override public void run() {
+                            mIvAd.setDx(j*3);
+                        }
+                    });
+                }
+            }
+        }.start();
     }
 
 

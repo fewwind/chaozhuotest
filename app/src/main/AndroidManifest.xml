@@ -104,6 +104,8 @@
         <activity android:name=".ui.ViewActivity"/>
         <activity android:name=".ui.RxActivity"/>
         <activity android:name=".ui.RvActivity"></activity>
+        <activity android:name=".magicvp.StandardViewPagerActivity"></activity>
+        <activity android:name=".magicvp.CircleViewPagerActivity"></activity>
     </application>
 
 </manifest>

@@ -7,4 +7,5 @@
     <color name="txt_normal">#333333</color>
     <color name="txt_select">#4b50cf</color>
     <color name="bg_page">#ededed</color>
+    <color name="card_start">#eae6e6</color>
 </resources>

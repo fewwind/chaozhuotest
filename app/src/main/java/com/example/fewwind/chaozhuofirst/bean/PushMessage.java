@@ -2,11 +2,12 @@
 package com.example.fewwind.chaozhuofirst.bean;
 
 import android.graphics.Bitmap;
+import java.io.Serializable;
 
 /**
  * Created by xianeng on 16-8-17.
  */
-public class PushMessage {
+public class PushMessage implements Serializable{
     public int type;
     public String message;
     public String title;

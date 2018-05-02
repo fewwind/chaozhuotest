@@ -4,4 +4,19 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tip_content">游戏助手已切换至%s的配置</string>
+    <string name="guaid_list1">标签支持列表样式啦！</string>
+    <string name="guaid_list2">您可以在此随意切换缩略图与标签样式。</string>
+
+    <string-array name="magic_effect">
+        <item>RotateDown</item>
+        <item>RotateUp</item>
+        <item>RotateY</item>
+        <item>Standard</item>
+        <item>Alpha</item>
+        <item>ScaleIn</item>
+        <item>RotateDown and Alpha</item>
+        <item>RotateDown and Alpha And ScaleIn</item>
+    </string-array>
+
 </resources>

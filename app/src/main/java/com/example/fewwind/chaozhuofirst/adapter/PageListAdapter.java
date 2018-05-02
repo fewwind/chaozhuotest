@@ -13,7 +13,7 @@ import java.util.List;
 
 public class PageListAdapter extends SuperBaseAdapter{
 
-    private int currentPagePos = 0;
+    public int currentPagePos = 0;
 
     public PageListAdapter(Context activity, List dataList, int layoutId) {
         super(activity, dataList, layoutId);
@@ -30,12 +30,13 @@ public class PageListAdapter extends SuperBaseAdapter{
         ImageView ivDelete;
         public ViewHolder(View itemView) {
             super(itemView);
+            itemView.setFocusable(true);
             tvTitle= (TextView) itemView.findViewById(R.id.id_item_page_tv_title);
             ivDelete= (ImageView) itemView.findViewById(R.id.id_item_page_iv_delete);
 
             ivDelete.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
-                    mListener.OnListClickLitener(ivDelete,ViewHolder.this,getLayoutPosition());
+                    mListener.OnListClickLitener(ivDelete,ViewHolder.this,getAdapterPosition());
                 }
             });
             tvTitle.setOnClickListener(new View.OnClickListener() {
@@ -59,5 +60,6 @@ public class PageListAdapter extends SuperBaseAdapter{
 
     public void setCurrentPagePos(int currentPagePos) {
         this.currentPagePos = currentPagePos;
+        notifyItemChanged(currentPagePos);
     }
 }

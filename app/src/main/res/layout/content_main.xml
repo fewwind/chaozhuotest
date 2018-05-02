@@ -3,14 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content_main"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.fewwind.chaozhuofirst.MainActivity"
     tools:showIn="@layout/activity_main">
-
+    <com.example.fewwind.chaozhuofirst.ui.EllipseTipView
+        android:id="@+id/tip_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </com.example.fewwind.chaozhuofirst.ui.EllipseTipView>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/id_rv_main"
         android:visibility="gone"
@@ -24,6 +28,12 @@
         android:textSize="25sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+    <com.example.fewwind.chaozhuofirst.ui.view.AdImageView
+        android:id="@+id/ad_image"
+        android:layout_width="100dp"
+        android:layout_height="200dp"
+        android:scaleType="matrix"
+        android:src="@drawable/wof" />
     <com.flaviofaria.kenburnsview.KenBurnsView
         android:id="@+id/image"
         android:layout_width="100dp"
