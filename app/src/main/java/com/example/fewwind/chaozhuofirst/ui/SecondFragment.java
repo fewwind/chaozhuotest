@@ -3,7 +3,10 @@ package com.example.fewwind.chaozhuofirst.ui;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+
 import com.example.fewwind.chaozhuofirst.R;
+import com.example.fewwind.chaozhuofirst.ui.fragment.BaseFragment;
 
 public class SecondFragment extends BaseFragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -41,15 +44,15 @@ public class SecondFragment extends BaseFragment {
         }
     }
 
-
-    @Override int getLayoutId() {
+    @Override
+    protected int getContentViewLayoutID() {
         return R.layout.fragment_second;
     }
 
+    @Override
+    protected void initViewsAndEvents(View view) {
 
-    @Override void initData() {
     }
-
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

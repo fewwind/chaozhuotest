@@ -6,8 +6,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
+
 import com.example.fewwind.chaozhuofirst.R;
-import com.orhanobut.logger.Logger;
+import com.example.fewwind.chaozhuofirst.ui.fragment.BaseFragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -63,24 +64,22 @@ public class MainFragment extends BaseFragment {
         }
     }
 
-
-    @Override int getLayoutId() {
-        Logger.e("MainFragn view");
+    @Override
+    protected int getContentViewLayoutID() {
         return R.layout.fragment_main;
     }
 
-
-    @Override void initData() {
-        Logger.w("MainFragn data");
+    @Override
+    protected void initViewsAndEvents(View view) {
         mRootView.findViewById(R.id.id_tv_fg).setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View v) {
+            @Override
+            public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("text/plain");
                 getActivity().startActivity(intent);
             }
         });
     }
-
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

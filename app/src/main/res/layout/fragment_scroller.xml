@@ -1,0 +1,47 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ProgressBar
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:progress="55"
+        android:progressBackgroundTint="@android:color/transparent"
+        android:progressTint="@android:color/transparent"
+        android:indeterminateDrawable="@drawable/closebtn_hover"
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dip"
+        android:background="#00B9D1"
+        android:padding="5dp"
+        android:text="点击后滑动"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="25sp" />
+
+    <com.example.fewwind.chaozhuofirst.ui.view.RefreshRelayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button">
+
+        <com.example.fewwind.chaozhuofirst.ui.view.LinearLayoutSubClass
+            android:id="@+id/linearLayoutSubClass"
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            android:background="#bed742">
+
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="0dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/mali" />
+        </com.example.fewwind.chaozhuofirst.ui.view.LinearLayoutSubClass>
+    </com.example.fewwind.chaozhuofirst.ui.view.RefreshRelayout>
+
+
+</RelativeLayout>

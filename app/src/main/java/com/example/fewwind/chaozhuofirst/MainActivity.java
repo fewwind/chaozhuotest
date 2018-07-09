@@ -5,7 +5,6 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
-import android.app.DownloadManager;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.Notification;
@@ -15,13 +14,8 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.PixelFormat;
 import android.hardware.input.InputManager;
-import android.media.MediaScannerConnection;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.StatFs;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -37,14 +31,12 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
+
 import com.example.fewwind.chaozhuofirst.adapter.baseadapter.CommonAdapter;
 import com.example.fewwind.chaozhuofirst.adapter.baseadapter.base.ViewHolder;
 import com.example.fewwind.chaozhuofirst.bean.MainIntent;
-import com.example.fewwind.chaozhuofirst.rxtest.ObservableF;
-import com.example.fewwind.chaozhuofirst.rxtest.SubscriberF;
 import com.example.fewwind.chaozhuofirst.ui.EllipseTipView;
 import com.example.fewwind.chaozhuofirst.ui.MainFragment;
-import com.example.fewwind.chaozhuofirst.ui.RvActivity;
 import com.example.fewwind.chaozhuofirst.ui.SecondFragment;
 import com.example.fewwind.chaozhuofirst.ui.view.AdImageView;
 import com.example.fewwind.chaozhuofirst.ui.view.FailingBall;
@@ -53,11 +45,10 @@ import com.example.fewwind.chaozhuofirst.utils.DataUtil;
 import com.flaviofaria.kenburnsview.KenBurnsView;
 import com.flaviofaria.kenburnsview.Transition;
 import com.orhanobut.logger.Logger;
+
 import java.io.File;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
-import static com.example.fewwind.chaozhuofirst.rxtest.ObservableF.creat;
 
 public class MainActivity extends AppCompatActivity {
     private Context mContext;
@@ -65,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView mTvAnim;
     private AdImageView mIvAd;
     RecyclerView mRv;
-    private Handler mHanlder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,16 +68,17 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         mTvAnim = (TextView) findViewById(R.id.id_tv_anim);
         mRv = (RecyclerView) findViewById(R.id.id_rv_main);
-        mRv.setLayoutManager(new GridLayoutManager(this,2));
-        mRv.setAdapter(new CommonAdapter<MainIntent>(this,R.layout.item_main, DataUtil.getMainIntent()){
+        mRv.setLayoutManager(new GridLayoutManager(this, 2));
+        mRv.setAdapter(new CommonAdapter<MainIntent>(this, R.layout.item_main, DataUtil.getMainIntent()) {
 
             @Override
             protected void convert(ViewHolder holder, final MainIntent mainIntent, int position) {
                 holder.getView(R.id.id_item_tv_main);
-                holder.setText(R.id.id_item_tv_main,mainIntent.name);
+                holder.setText(R.id.id_item_tv_main, mainIntent.name);
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override public void onClick(View v) {
-                        startActivity(new Intent(MainActivity.this,mainIntent.clazz));
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(MainActivity.this, mainIntent.clazz));
 
                     }
                 });
@@ -106,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                         .setContentTitle("title")
                         .setContentText("content")
                         .setSmallIcon(R.drawable.ic_album_black_24dp)
-                        .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.wof));
+                        .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.wof));
                 final Notification notification = builder.build();
                 final NotificationManager manager = (NotificationManager) mContext.getSystemService(
                         Context.NOTIFICATION_SERVICE);
@@ -116,7 +107,8 @@ public class MainActivity extends AppCompatActivity {
                 InputManager inputManager = (InputManager) getSystemService(Context.INPUT_SERVICE);
 
                 view.postDelayed(new Runnable() {
-                    @Override public void run() {
+                    @Override
+                    public void run() {
                         manager.notify(0, notification);
                     }
                 }, 2000);
@@ -149,60 +141,37 @@ public class MainActivity extends AppCompatActivity {
         MainFragment mainFragment = MainFragment.newInstance("", "");
         FragmentManager fm = getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
-        transaction.replace(R.id.content_main,mainFragment);
+        transaction.replace(R.id.content_main, mainFragment);
         transaction.commit();
         fm.beginTransaction();
 
         getWindow().getDecorView().post(new Runnable() {
-            @Override public void run() {
+            @Override
+            public void run() {
                 // 想正确获取图片宽高或者view的宽高，必须在执行 两次 PerformTraversals 方法，这个方法正好在这之后
-                Logger.i(kbv.getWidth()+"==="+kbv.getHeight());
+                Logger.i(kbv.getWidth() + "===" + kbv.getHeight());
             }
         });
 
         fab.post(new Runnable() {
-            @Override public void run() {
-                Logger.w(kbv.getWidth()+"==="+kbv.getHeight());
+            @Override
+            public void run() {
+                Logger.w(kbv.getWidth() + "===" + kbv.getHeight());
             }
         });
 
-        File files = new File(Environment.getExternalStorageDirectory().getPath()+"/.CZWall");
-        if (files.exists()){
+        File files = new File(Environment.getExternalStorageDirectory().getPath() + "/.CZWall");
+        if (files.exists()) {
         }
 
         Context mContext = this;
 
-        startActivity(new Intent(MainActivity.this, RvActivity.class));
-        ClassLoader classLoader = getClassLoader();
-        while (null!=classLoader){
-            Logger.i(classLoader.toString());
-            Logger.w(mContext.getClassLoader().toString());
-            classLoader = classLoader.getParent();
-        }
         EllipseTipView tipView = (EllipseTipView) findViewById(R.id.tip_view);
-        tipView.setShow(0,"娜可露露");
-        EllipseTipView  ifng = new EllipseTipView(this);
+        tipView.setShow(0, "娜可露露");
+        EllipseTipView ifng = new EllipseTipView(this);
         mIvAd = (AdImageView) findViewById(R.id.ad_image);
-        Logger.w("资源id"+DataUtil.getIdByName("wo"));
-        new Thread(){
-            @Override public void run() {
-                super.run();
-                for (int i = 0; i < 33; i++) {
-                    final int j = i;
-                    try {
-                        Thread.sleep(666);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    Logger.v("ondraw = "+j);
-                    runOnUiThread(new Runnable() {
-                        @Override public void run() {
-                            mIvAd.setDx(j*3);
-                        }
-                    });
-                }
-            }
-        }.start();
+        Logger.w("资源id" + DataUtil.getIdByName("wo"));
+
     }
 
 
@@ -213,6 +182,7 @@ public class MainActivity extends AppCompatActivity {
         intent.setAction("unment");
         sendBroadcast(intent, Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS);
     }
+
     ExecutorService fixedThreadPool;
 
     private void showAnim(View view) {
@@ -224,7 +194,8 @@ public class MainActivity extends AppCompatActivity {
         //objectAnimator.setDuration(1000).start();
         objectAnimator.setRepeatCount(1);
         objectAnimator.addListener(new AnimatorListenerAdapter() {
-            @Override public void onAnimationEnd(Animator animation) {
+            @Override
+            public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
             }
         });
@@ -239,7 +210,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     String threadName = Thread.currentThread().getName();
-                    Logger.v("线程："+threadName+",正在执行第" + index + "个任务");
+                    Logger.v("线程：" + threadName + ",正在执行第" + index + "个任务");
                     try {
                         Thread.sleep(2000);
                     } catch (InterruptedException e) {
@@ -269,7 +240,8 @@ public class MainActivity extends AppCompatActivity {
         //manager.addView(mBtn, layoutParams);
 
         mBtn.setOnTouchListener(new View.OnTouchListener() {
-            @Override public boolean onTouch(View v, MotionEvent event) {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
 
                 int x = (int) event.getRawX();
                 int y = (int) event.getRawY();
@@ -308,149 +280,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    @Override protected void onResume() {
+    @Override
+    protected void onResume() {
         super.onResume();
-        Logger.d("On Resume");
-        scanSD();
     }
 
-
-    private void scanSD() {
-        String downPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
-                        .getPath();
-        MediaScannerConnection.scanFile(this, new String[] {downPath  }, null, null);
-        Logger.w(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
-                .getPath());
-        DownloadManager manager =
-                (DownloadManager) mContext.getSystemService(Context.DOWNLOAD_SERVICE);
-        //manager.addCompletedDownload("f.apk", "apk", true,
-        //        "*/*", downPath, 6000, true);
-        String ss = Util.getBuildInfo();
-        //Logger.w(ss);
-        //ToasF.show(ss);
-        File datapath = Environment.getDataDirectory();
-        StatFs dataFs=new StatFs(datapath.getPath());
-        long sizes=(long)dataFs.getFreeBlocks()*(long)dataFs.getBlockSize();
-        long available=sizes/((1024*1024));
-        //Logger.w("size"+available);
-        new Thread(){
-            @Override public void run() {
-                super.run();
-                Logger.d("1"+Thread.currentThread().getName());
-                //Looper.prepare();
-                mHanlder = new Handler(Looper.getMainLooper());
-                mHanlder.post(new Runnable() {
-                    @Override public void run() {
-                        Logger.v("2"+Thread.currentThread().getName());
-                    }
-                });
-                //Looper.loop();
-            }
-        }.start();
-
-        HandlerThread handlerThread = new HandlerThread("fewwind");
-        handlerThread.start();
-        final Handler handler = new Handler(handlerThread.getLooper());
-        handler.post(new Runnable() {
-            @Override public void run() {
-
-            }
-        });
-        Logger.w("---"+ new RuntimeException("fewwind"));
-
-    }
-
-
-    /**
-     * 获取字符串的长度，如果有中文，则每个中文字符计为2位
-     * @param value 指定的字符串
-     * @return 字符串的长度
-     */
-    public static int length(String value) {
-        int valueLength = 0;
-        String chinese = "[\u0391-\uFFE5]";
-    /* 获取字段值的长度，如果含中文字符，则每个中文字符长度为2，否则为1 */
-        for (int i = 0; i < value.length(); i++) {
-      /* 获取一个字符 */
-            String temp = value.substring(i, i + 1);
-      /* 判断是否为中文字符 */
-            if (temp.matches(chinese)) {
-        /* 中文字符长度为2 */
-                valueLength += 2;
-            } else {
-        /* 其他字符长度为1 */
-                valueLength += 1;
-            }
-        }
-        return valueLength;
-    }
-
-
-    private void testCustomRX() {
-
-        //ActivityManager am = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
-        //am.clearApplicationUserData();
-        creat(new ObservableF.OnSubscribeF<String>() {
-            @Override public void call(SubscriberF<? super String> subscriber) {
-                subscriber.onNext("");
-            }
-        }).subscribe(new SubscriberF<String>() {
-            @Override public void Completed() {
-
-            }
-
-            @Override public void onError(Throwable t) {
-            }
-            @Override public void onNext(String s) {
-
-            }
-        });
-
-        ObservableF observableF = ObservableF.creat(new OnsubScribeFImp());
-        SubscriberF subscriberF = new SubScribeFImp();
-        observableF.subscribe(subscriberF);
-
-    }
-
-    private class OnsubScribeFImp implements ObservableF.OnSubscribeF{
-        @Override public void call(SubscriberF subscriber) {
-            subscriber.onStart();
-        }
-    }
-    private class SubScribeFImp extends SubscriberF{
-
-        @Override public void Completed() {
-
-        }
-
-
-        @Override public void onError(Throwable t) {
-
-        }
-
-
-        @Override public void onNext(Object o) {
-
-        }
-    }
-
-
-    @Override protected void onPause() {
-        Logger.v("On Pause");
-        super.onPause();
-        mHanlder.removeCallbacksAndMessages(null);
-        mHanlder = null;
-    }
-
-
-    @Override protected void onStop() {
-        Logger.w("On Stop");
-        super.onStop();
-    }
-
-
-    @Override protected void onDestroy() {
-        super.onDestroy();
-        Logger.e("On Destory");
-    }
 }

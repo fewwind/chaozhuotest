@@ -14,7 +14,7 @@ import java.lang.reflect.Proxy;
 
 public class ProxyTest {
     public void test() {
-        Service service = new UserServiceIml();
+        final Service service = new UserServiceIml();
         MyInvocationHandler handler = new MyInvocationHandler(service);
         Service proxy = (Service) handler.getProxy();
 //        proxy.remoteMethod();
@@ -22,7 +22,7 @@ public class ProxyTest {
             @Override
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 
-                return method.invoke(this, args);
+                return method.invoke(service, args);
             }
         });
         proxy2.remoteMethod();
